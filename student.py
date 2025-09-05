@@ -3,7 +3,7 @@ from util import slow_print, banner, save_result
 
 QUESTIONS_FILE = "quest.bin"
 
-def start_exam():
+def start_exam(username):
     """Runs the student exam loop."""
     banner("Student Exam Interface")
 
@@ -31,8 +31,17 @@ def start_exam():
                         print("   d) Skip")
 
                         choice = input("Your answer [a/b/c/d]: ").lower().strip()
+                        correct_answer = opts[3]
 
-                        if choice == opts[3]:
+                        if choice == "a" and opts[0] == correct_answer:
+                            print("✅ Correct!")
+                            correct += 1
+                            score += 4
+                        elif choice == "b" and opts[1] == correct_answer:
+                            print("✅ Correct!")
+                            correct += 1
+                            score += 4
+                        elif choice == "c" and opts[2] == correct_answer:
                             print("✅ Correct!")
                             correct += 1
                             score += 4
@@ -53,7 +62,10 @@ def start_exam():
     except FileNotFoundError:
         print("⚠️ No questions available. Ask a teacher to add some first.")
         return None
-    save_result(username, name, cor, incor, skip, marks)
+
+    # Save results (for performance board)
+    save_result(username, name, correct, incorrect, skipped, score)
+
     return {
         "name": name,
         "correct": correct,
