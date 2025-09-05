@@ -1,5 +1,8 @@
 import time
 import os
+import csv
+
+RESULTS_FILE = "results.csv"
 
 def slow_print(text: str, delay: float = 0.02):
     """Prints text one character at a time for cinematic effect."""
@@ -17,10 +20,6 @@ def banner(title: str):
     print("\n" + "=" * 60)
     print(title.center(60))
     print("=" * 60 + "\n")
-# util.py
-import csv
-
-RESULTS_FILE = "results.csv"
 
 def save_result(username, name, cor, incor, skip, marks):
     """Save a student's result after the quiz."""
@@ -31,7 +30,6 @@ def save_result(username, name, cor, incor, skip, marks):
         if not file_exists:  # write header if file doesn't exist
             writer.writerow(["Username", "Name", "Correct", "Incorrect", "Skipped", "Score"])
         writer.writerow([username, name, cor, incor, skip, marks])
-
 
 def performance_board():
     """Display all stored results as a leaderboard."""
@@ -50,7 +48,7 @@ def performance_board():
     # Sort by score (highest first)
     results.sort(key=lambda x: int(x["Score"]), reverse=True)
 
-    print("\n================ PERFORMANCE BOARD ================\n")
+    banner("🏆 Performance Board")
     print(f"{'Rank':<5}{'Username':<20}{'Name':<15}{'Score':<10}{'Correct':<10}{'Incorrect':<12}{'Skipped':<10}")
     print("-" * 80)
 
