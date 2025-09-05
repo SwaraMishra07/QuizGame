@@ -31,7 +31,7 @@ def add_question():
 
 def view_questions():
     """Allows teacher to view all questions in the question bank."""
-    banner("Teacher Interface - Question Bank")
+    banner("📚 Teacher Interface - Question Bank")
     try:
         with open(QUESTIONS_FILE, "rb") as f:
             i = 1
@@ -39,12 +39,12 @@ def view_questions():
                 try:
                     data = pickle.load(f)
                     for q, opts in data.items():
-                        print(f"{i}. {q}")
+                        print(f"\nQ{i}. {q}")
                         print(f"   a) {opts[0]}")
                         print(f"   b) {opts[1]}")
                         print(f"   c) {opts[2]}")
-                        print(f"   Answer: {opts[3]}")
-                        print("-" * 40)
+                        print(f"   ✅ Correct Answer: {opts[3]}")
+                        print("-" * 50)
                         i += 1
                 except EOFError:
                     break
