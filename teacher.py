@@ -1,5 +1,5 @@
 import pickle
-from utils import slow_print, banner
+from util import slow_print, banner
 
 QUESTIONS_FILE = "quest.bin"
 
@@ -20,7 +20,7 @@ def add_question():
         else:
             print("⚠️ Please choose only a, b, or c.")
 
-    # prepare structure
+    # prepare structure: [opt_a, opt_b, opt_c, correct_letter]
     q_data = {question: [option_a, option_b, option_c, correct]}
 
     # save to binary file
@@ -43,7 +43,9 @@ def view_questions():
                         print(f"   a) {opts[0]}")
                         print(f"   b) {opts[1]}")
                         print(f"   c) {opts[2]}")
-                        print(f"   ✅ Correct Answer: {opts[3]}")
+                        correct = opts[3]
+                        correct_text = opts[ord(correct) - ord("a")]
+                        print(f"   ✅ Correct Answer: {correct}) {correct_text}")
                         print("-" * 50)
                         i += 1
                 except EOFError:
