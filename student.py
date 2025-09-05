@@ -1,5 +1,5 @@
 import pickle
-from utils import slow_print, banner
+from util import slow_print, banner, save_result
 
 QUESTIONS_FILE = "quest.bin"
 
@@ -53,7 +53,7 @@ def start_exam():
     except FileNotFoundError:
         print("⚠️ No questions available. Ask a teacher to add some first.")
         return None
-
+    save_result(username, name, cor, incor, skip, marks)
     return {
         "name": name,
         "correct": correct,
