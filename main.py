@@ -1,7 +1,7 @@
 from login import login_user
 from teacher import add_question, view_questions
 from student import start_exam, show_result
-from utils import banner, clear_screen
+from util import banner, clear_screen, performance_board
 
 def main():
     clear_screen()
