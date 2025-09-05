@@ -7,10 +7,11 @@ def main():
     clear_screen()
     banner("The Greatest Student-Teacher Quiz Interface")
 
-    user = login()
-    if not user:
+   mode, username = login_user()
+   if not username:
         print("❌ Login failed. Exiting...")
         return
+
 
     while True:
         banner("Main Menu")
