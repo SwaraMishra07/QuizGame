@@ -1,4 +1,4 @@
-from login import login
+from login import login_user
 from teacher import add_question, view_questions
 from student import start_exam, show_result
 from utils import banner, clear_screen
@@ -29,7 +29,7 @@ def main():
         elif choice == "3":
             result = start_exam()
             show_result(result)
-        elif opt == 4:
+        elif choice == 4:
             performance_board()
         elif choice == "5":
             print("👋 Goodbye!")
