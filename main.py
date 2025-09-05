@@ -17,7 +17,8 @@ def main():
         print("1. Teacher - Add Question")
         print("2. Teacher - View Question Bank")
         print("3. Student - Take Exam")
-        print("4. Exit")
+        print("4. See Performance Board")
+        print("5. Exit")
 
         choice = input("Choose an option (1-4): ").strip()
 
@@ -28,11 +29,13 @@ def main():
         elif choice == "3":
             result = start_exam()
             show_result(result)
-        elif choice == "4":
+        elif opt == 4:
+            performance_board()
+        elif choice == "5":
             print("👋 Goodbye!")
             break
         else:
-            print("⚠️ Invalid choice. Please select 1-4.")
+            print("⚠️ Invalid choice. Please select 1-5.")
 
 if __name__ == "__main__":
     main()
